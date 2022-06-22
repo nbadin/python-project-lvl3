@@ -1,4 +1,3 @@
-from distutils.command.build import build
 import requests
 import os
 
@@ -9,7 +8,7 @@ def download(url, path=os.getcwd()):
 
     with open(filepath, 'w') as f:
         f.write(response.text)
-    
+
     return filepath
 
 
