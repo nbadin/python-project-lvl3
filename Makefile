@@ -6,3 +6,12 @@ package-install:
 
 install:
 	poetry install
+
+test:
+	poetry run test
+
+lint:
+	poetry run flake8 page_loader
+
+reinstall:
+	pip install --force-reinstall --user dist/*.whl
