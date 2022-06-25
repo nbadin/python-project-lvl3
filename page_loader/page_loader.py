@@ -4,7 +4,7 @@ import os
 
 def download(url, path=os.getcwd()):
     response = requests.get(url)
-    filepath = os.path.join(path, build_filename(url))
+    filepath = os.path.join(path, get_html_file_name(url))
 
     with open(filepath, 'w') as f:
         f.write(response.text)
@@ -12,8 +12,13 @@ def download(url, path=os.getcwd()):
     return filepath
 
 
-def build_filename(url):
+def get_basic_name(url):
     if 'http://' in url:
-        return '.'.join([url[7:].replace('.', '-').replace('/', '-'), 'html'])
+        basic_name = url[7:]
     elif 'https://' in url:
-        return '.'.join([url[8:].replace('.', '-').replace('/', '-'), 'html'])
+        basic_name = url[8:]
+    return basic_name.replace('.', '-').replace('/', '-')
+
+
+def get_html_file_name(url):
+    return f'{get_basic_name(url)}.html'

@@ -8,7 +8,7 @@ install:
 	poetry install
 
 test:
-	poetry run test
+	poetry run pytest
 
 lint:
 	poetry run flake8 page_loader
