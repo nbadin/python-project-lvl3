@@ -8,10 +8,10 @@ install:
 	poetry install
 
 test:
-	poetry run pytest
+		poetry run pytest
 
 lint:
-	poetry run flake8 page_loader
+		poetry run flake8 page_loader
 
 reinstall:
 	pip install --force-reinstall --user dist/*.whl
