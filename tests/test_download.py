@@ -1,4 +1,4 @@
-from page_loader.page_loader import download
+from page_loader import download
 import tempfile
 import os
 import pytest
@@ -11,8 +11,16 @@ def downloaded_page():
         return text
 
 
-def test_download(requests_mock, downloaded_page):
+@pytest.fixture
+def downloaded_image():
+    with open('tests/fixture/files/img.svg', 'rb') as f:
+        content = f.read()
+        return content
+
+
+def test_download(requests_mock, downloaded_page, downloaded_image):
     requests_mock.get('http://test.com', text=downloaded_page)
+    requests_mock.get('files/img.svg', content=downloaded_image)
     tmp_path = tempfile.mkdtemp()
     path_to_file = download('http://test.com', tmp_path)
     assert os.path.isfile(path_to_file)
