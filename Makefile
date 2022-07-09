@@ -14,4 +14,5 @@ lint:
 		poetry run flake8 page_loader
 
 reinstall:
+	make build
 	pip install --force-reinstall --user dist/*.whl
