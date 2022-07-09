@@ -45,7 +45,7 @@ class PageLoader:
 
             else:
                 raise ValueError(
-                    f'Files wasn\'t downloaded! Response code: {response.status_code}'
+                    f'Files wasn\'t downloaded! Response code: {response.status_code}'  # noqa: E501
                 )
 
     def __download_links(self):
@@ -59,10 +59,10 @@ class PageLoader:
                     filename = self.__make_name(link['href'])
                     filepath = os.path.join(self.dirpath, filename)
                     open(filepath, 'w').write(response.text)
-                    link['href'] = os.path.join(self.resources_dirname, filename)
+                    link['href'] = os.path.join(self.resources_dirname, filename)  # noqa: E501
                 else:
                     raise ValueError(
-                        f'Files wasn\'t downloaded! Response code: {response.status_code}'
+                        f'Files wasn\'t downloaded! Response code: {response.status_code}'  # noqa: E501
                     )
 
     def __download_scripts(self):
@@ -76,11 +76,11 @@ class PageLoader:
                     filename = self.__make_name(script['src'])
                     filepath = os.path.join(self.dirpath, filename)
                     open(filepath, 'wb').write(response.content)
-                    script['src'] = os.path.join(self.resources_dirname, filename)
+                    script['src'] = os.path.join(self.resources_dirname, filename)  # noqa: E501
 
                 else:
                     raise ValueError(
-                        f'Files wasn\'t downloaded! Response code: {response.status_code}'
+                        f'Files wasn\'t downloaded! Response code: {response.status_code}'  # noqa: E501
                     )
 
     def __load_page_content(self):
@@ -89,7 +89,7 @@ class PageLoader:
             return response.text
         else:
             raise ValueError(
-                f'Page wasn\'t downloaded! Response code: {response.status_code}'
+                f'Page wasn\'t downloaded! Response code: {response.status_code}'  # noqa: E501
             )
 
     def __make_name(self, url):
